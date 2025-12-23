@@ -5,6 +5,7 @@ import com.back.boundedContext.post.domain.Post;
 import com.back.boundedContext.post.out.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -18,6 +19,7 @@ public class PostFacade {
         return postRepository.count();
     }
 
+    @Transactional
     public Post createPost(Member author, String title, String content) {
         return createPostUseCase.createPost(author, title, content);
     }
