@@ -19,7 +19,7 @@ public class PostFacade {
     }
 
     public Post createPost(Member author, String title, String content) {
-        return createPostUseCase.execute(author, title, content);
+        return createPostUseCase.createPost(author, title, content);
     }
 
     public Optional<Post> findById(int id) {

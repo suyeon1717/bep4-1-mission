@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class JoinMemberUseCase {
     private final MemberRepository memberRepository;
 
-    public Member execute(String username, String password, String nickname) {
+    public Member join(String username, String password, String nickname) {
         memberRepository.findByUsername(username).ifPresent(m -> {
             throw new DomainException("409-1", "이미 존재하는 username 입니다.");
         });
