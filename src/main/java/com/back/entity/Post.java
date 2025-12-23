@@ -36,6 +36,8 @@ public class Post extends BaseIdAndTime {
         Comment comment = new Comment(this, author, content);
 
         comments.add(comment);
+        author.increaseActivityScore(1); // 댓글 작성시 작성자의 활동점수 1점 증가
+
         return comment;
     }
 
