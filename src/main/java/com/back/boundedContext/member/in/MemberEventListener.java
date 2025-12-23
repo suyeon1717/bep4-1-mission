@@ -1,7 +1,7 @@
-package com.back.boundedContext.member.eventListener;
+package com.back.boundedContext.member.in;
 
-import com.back.boundedContext.member.entity.Member;
-import com.back.boundedContext.member.repository.MemberRepository;
+import com.back.boundedContext.member.domain.Member;
+import com.back.boundedContext.member.out.MemberRepository;
 import com.back.shared.post.event.CommentCreatedEvent;
 import com.back.shared.post.event.PostCreatedEvent;
 import lombok.RequiredArgsConstructor;
