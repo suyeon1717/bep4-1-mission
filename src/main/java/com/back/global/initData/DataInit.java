@@ -52,9 +52,9 @@ public class DataInit {
     public void makeBasePosts() {
         if (postService.count() > 0) return;
 
-        Member user1 = memberRepository.getReferenceById(4L);
-        Member user2 = memberRepository.getReferenceById(5L);
-        Member user3 = memberRepository.getReferenceById(6L);
+        Member user1 = memberRepository.getReferenceById(4);
+        Member user2 = memberRepository.getReferenceById(5);
+        Member user3 = memberRepository.getReferenceById(6);
 
         Post post1 = postService.createPost(user1, "제목1", "내용1");
         Post post2 = postService.createPost(user1, "제목2", "내용2");
