@@ -3,15 +3,13 @@ package com.back.boundedContext.member.app;
 import com.back.boundedContext.member.domain.Member;
 import com.back.boundedContext.member.out.MemberRepository;
 import com.back.global.exception.DomainException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class MemberJoinUseCase {
     private final MemberRepository memberRepository;
-
-    public MemberJoinUseCase(MemberRepository memberRepository) {
-        this.memberRepository = memberRepository;
-    }
 
     public Member execute(String username, String password, String nickname) {
         memberRepository.findByUsername(username).ifPresent(m -> {
