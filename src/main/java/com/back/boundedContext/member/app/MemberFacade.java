@@ -11,7 +11,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class MemberFacade {
     private final MemberRepository memberRepository;
-    private final MemberJoinUseCase memberJoinUseCase;
+    private final JoinMemberUseCase memberJoinUseCase;
 
     public long count() {
         return memberRepository.count();

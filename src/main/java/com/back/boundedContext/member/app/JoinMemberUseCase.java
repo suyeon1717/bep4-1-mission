@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class MemberJoinUseCase {
+public class JoinMemberUseCase {
     private final MemberRepository memberRepository;
 
     public Member execute(String username, String password, String nickname) {
