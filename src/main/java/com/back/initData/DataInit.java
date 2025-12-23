@@ -32,6 +32,7 @@ public class DataInit {
         return args -> {
             self.makeBaseMembers();
             self.makeBasePosts();
+            self.makeBaseComments();
         };
     }
 
@@ -51,11 +52,6 @@ public class DataInit {
     public void makeBasePosts() {
         if (postService.count() > 0) return;
 
-        /**
-         * user1 회원(4번 회원)이 글 3개 작성
-         * user2 회원(5번 회원)이 글 2개 작성
-         * user3 회원(6번 회원)이 글 1개 작성
-         */
         Member user1 = memberRepository.getReferenceById(4L);
         Member user2 = memberRepository.getReferenceById(5L);
         Member user3 = memberRepository.getReferenceById(6L);
@@ -67,5 +63,33 @@ public class DataInit {
         Post post5 = postService.createPost(user2, "제목5", "내용5");
         Post post6 = postService.createPost(user3, "제목6", "내용6");
 
+    }
+
+    @Transactional
+    public void makeBaseComments() {
+        Post post1 = postService.findById(1).get();
+        Post post2 = postService.findById(2).get();
+        Post post3 = postService.findById(3).get();
+        Post post4 = postService.findById(4).get();
+        Post post5 = postService.findById(5).get();
+        Post post6 = postService.findById(6).get();
+
+        Member user1 = memberService.findByUsername("user1").get();
+        Member user2 = memberService.findByUsername("user2").get();
+        Member user3 = memberService.findByUsername("user3").get();
+
+        if (post1.hasComments()) return;
+
+        post1.addComment(user1, "댓글1");
+        post1.addComment(user2, "댓글2");
+        post1.addComment(user3, "댓글3");
+
+        post2.addComment(user2, "댓글4");
+        post2.addComment(user2, "댓글5");
+
+        post3.addComment(user3, "댓글6");
+        post3.addComment(user1, "댓글7");
+
+        post4.addComment(user1, "댓글8");
     }
 }
