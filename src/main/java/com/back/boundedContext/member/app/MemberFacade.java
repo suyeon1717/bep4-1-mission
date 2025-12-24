@@ -1,6 +1,7 @@
 package com.back.boundedContext.member.app;
 
 import com.back.boundedContext.member.domain.Member;
+import com.back.boundedContext.member.domain.MemberPolicy;
 import com.back.boundedContext.member.out.MemberRepository;
 import com.back.global.rsData.RsData;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,7 @@ import java.util.Optional;
 public class MemberFacade {
     private final MemberRepository memberRepository;
     private final JoinMemberUseCase memberJoinUseCase;
+    private final MemberPolicy memberPolicy;
 
     public long count() {
         return memberRepository.count();
@@ -26,5 +28,10 @@ public class MemberFacade {
 
     public Optional<Member> findByUsername(String username) {
         return memberRepository.findByUsername(username);
+    }
+
+    public String getRandomSecureTip() {
+        return "비밀번호의 유효기간은 %d일 입니다."
+                .formatted(memberPolicy.getNeedToChangePasswordDays());
     }
 }
