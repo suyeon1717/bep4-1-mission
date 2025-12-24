@@ -5,6 +5,7 @@ import com.back.boundedContext.member.domain.Member;
 import com.back.boundedContext.member.out.MemberRepository;
 import com.back.boundedContext.post.app.PostFacade;
 import com.back.boundedContext.post.domain.Post;
+import com.back.boundedContext.post.domain.PostMember;
 import com.back.global.rsData.RsData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationRunner;
@@ -17,9 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 public class DataInit {
     private final DataInit self;
-//    private final MemberService memberService;
     private final MemberFacade memberFacade;
-//    private final PostService postService;
     private final PostFacade postFacade;
     private final MemberRepository memberRepository;
 
@@ -55,9 +54,9 @@ public class DataInit {
     public void makeBasePosts() {
         if (postFacade.count() > 0) return;
 
-        Member user1 = memberFacade.findByUsername("user1").get();
-        Member user2 = memberFacade.findByUsername("user2").get();
-        Member user3 = memberFacade.findByUsername("user3").get();
+        PostMember user1 = postFacade.findPostMemberByUsername("user1").get();
+        PostMember user2 = postFacade.findPostMemberByUsername("user2").get();
+        PostMember user3 = postFacade.findPostMemberByUsername("user3").get();
 
         RsData<Post> post1RsData = postFacade.createPost(user1, "제목1", "내용1");
         log.debug(post1RsData.getMsg());
@@ -88,9 +87,9 @@ public class DataInit {
         Post post5 = postFacade.findById(5).get();
         Post post6 = postFacade.findById(6).get();
 
-        Member user1 = memberFacade.findByUsername("user1").get();
-        Member user2 = memberFacade.findByUsername("user2").get();
-        Member user3 = memberFacade.findByUsername("user3").get();
+        PostMember user1 = postFacade.findPostMemberByUsername("user1").get();
+        PostMember user2 = postFacade.findPostMemberByUsername("user2").get();
+        PostMember user3 = postFacade.findPostMemberByUsername("user3").get();
 
         if (post1.hasComments()) return;
 
