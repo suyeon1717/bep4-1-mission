@@ -15,7 +15,7 @@ import static jakarta.persistence.FetchType.LAZY;
 @Entity
 @Table(name = "POST_POST_COMMENT")
 @NoArgsConstructor
-public class Comment extends BaseIdAndTime {
+public class PostComment extends BaseIdAndTime {
     @ManyToOne(fetch = LAZY)
     private Post post;
     @ManyToOne(fetch = LAZY)
@@ -23,7 +23,7 @@ public class Comment extends BaseIdAndTime {
     @Column(columnDefinition = "TEXT")
     private String content;
 
-    public Comment(Post post, Member author, String content) {
+    public PostComment(Post post, Member author, String content) {
         this.post = post;
         this.author = author;
         this.content = content;

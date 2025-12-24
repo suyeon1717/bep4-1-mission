@@ -27,7 +27,7 @@ public class Post extends BaseIdAndTime {
     private String content;
 
     @OneToMany(mappedBy = "post", cascade = {PERSIST, REMOVE}, orphanRemoval = true)
-    private List<Comment> comments = new ArrayList<>();
+    private List<PostComment> postComments = new ArrayList<>();
 
     public Post(Member author, String title, String content) {
         this.author = author;
@@ -35,18 +35,18 @@ public class Post extends BaseIdAndTime {
         this.content = content;
     }
 
-    public Comment addComment(Member author, String content) {
-        Comment comment = new Comment(this, author, content);
+    public PostComment addComment(Member author, String content) {
+        PostComment postComment = new PostComment(this, author, content);
 
-        comments.add(comment);
+        postComments.add(postComment);
 
         // 댓글 작성시 작성자의 활동점수 1점 증가
-        publishEvent(new CommentCreatedEvent(new CommentDto(comment)));
+        publishEvent(new CommentCreatedEvent(new CommentDto(postComment)));
 
-        return comment;
+        return postComment;
     }
 
     public boolean hasComments(){
-        return !comments.isEmpty();
+        return !postComments.isEmpty();
     }
 }

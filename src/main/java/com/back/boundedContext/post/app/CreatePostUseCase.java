@@ -22,6 +22,7 @@ public class CreatePostUseCase {
         Post post = postRepository.save(new Post(author, title, content));
         eventPublisher.publish(new PostCreatedEvent(new PostDto(post)));
 
+        // API를 호출을 통해 memberFacade 메서드 호출 (타 모듈간 메서드 호출 X)
         String randomSecureTip = memberApiClient.getRandomSecureTip();
 
         return new RsData<>(

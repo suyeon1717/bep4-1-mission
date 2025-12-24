@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "POST_MEMBER")
 @NoArgsConstructor
 @Getter
-public class PostMember extends BaseIdAndTimeManual {
+public class PostMember extends BaseIdAndTimeManual { // Member를 동기화시켜서 post 모듈 내부에서 사용
     @Column(unique = true)
     private String username;
     private String password;
