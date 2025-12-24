@@ -2,7 +2,6 @@ package com.back.global.initData;
 
 import com.back.boundedContext.member.app.MemberFacade;
 import com.back.boundedContext.member.domain.Member;
-import com.back.boundedContext.member.out.MemberRepository;
 import com.back.boundedContext.post.app.PostFacade;
 import com.back.boundedContext.post.domain.Post;
 import com.back.boundedContext.post.domain.PostMember;
@@ -20,13 +19,11 @@ public class DataInit {
     private final DataInit self;
     private final MemberFacade memberFacade;
     private final PostFacade postFacade;
-    private final MemberRepository memberRepository;
 
-    public DataInit(@Lazy DataInit self, MemberFacade memberFacade, PostFacade postFacade, MemberRepository memberRepository) {
+    public DataInit(@Lazy DataInit self, MemberFacade memberFacade, PostFacade postFacade) {
         this.self = self;
         this.memberFacade = memberFacade;
         this.postFacade = postFacade;
-        this.memberRepository = memberRepository;
     }
 
     @Bean
