@@ -17,6 +17,7 @@ public class MemberFacade {
     private final JoinMemberUseCase memberJoinUseCase;
     private final MemberPolicy memberPolicy;
 
+    @Transactional(readOnly = true)
     public long count() {
         return memberRepository.count();
     }
@@ -26,6 +27,7 @@ public class MemberFacade {
         return memberJoinUseCase.join(username, password, nickname);
     }
 
+    @Transactional(readOnly = true)
     public Optional<Member> findByUsername(String username) {
         return memberRepository.findByUsername(username);
     }

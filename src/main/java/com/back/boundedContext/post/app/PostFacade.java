@@ -16,6 +16,7 @@ public class PostFacade {
     private final PostRepository postRepository;
     private final CreatePostUseCase createPostUseCase;
 
+    @Transactional(readOnly = true)
     public long count() {
         return postRepository.count();
     }
@@ -25,6 +26,7 @@ public class PostFacade {
         return createPostUseCase.createPost(author, title, content);
     }
 
+    @Transactional(readOnly = true)
     public Optional<Post> findById(int id) {
         return postRepository.findById(id);
     }
