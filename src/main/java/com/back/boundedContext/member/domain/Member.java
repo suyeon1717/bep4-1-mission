@@ -1,6 +1,8 @@
 package com.back.boundedContext.member.domain;
 
 import com.back.shared.member.domain.SourceMember;
+import com.back.shared.member.dto.MemberDto;
+import com.back.shared.member.event.MemberModifiedEvent;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -17,8 +19,13 @@ public class Member extends SourceMember {
     }
 
     public int increaseActivityScore(int amount) {
+        if(amount == 0) return getActivityScore();
+
         // BaseMember의 ActivityScore 값 접근
         setActivityScore(getActivityScore() + amount);
+
+        // 활동점수 변동 이벤트 호출 --> PostMember 테이블에 동기화
+        publishEvent(new MemberModifiedEvent(new MemberDto(this)));
 
         return getActivityScore();
     }

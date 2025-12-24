@@ -23,6 +23,6 @@ public abstract class SourceMember extends BaseMember {
     private LocalDateTime modifyDate;
 
     public SourceMember(String username, String password, String nickname) {
-        super(username, password, nickname); // BaseMember 필드 초기화
+        super(username, password, nickname, 0); // BaseMember 필드 초기화
     }
 }
