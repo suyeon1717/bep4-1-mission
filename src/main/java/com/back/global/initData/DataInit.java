@@ -55,9 +55,9 @@ public class DataInit {
     public void makeBasePosts() {
         if (postFacade.count() > 0) return;
 
-        Member user1 = memberRepository.getReferenceById(4);
-        Member user2 = memberRepository.getReferenceById(5);
-        Member user3 = memberRepository.getReferenceById(6);
+        Member user1 = memberFacade.findByUsername("user1").get();
+        Member user2 = memberFacade.findByUsername("user2").get();
+        Member user3 = memberFacade.findByUsername("user3").get();
 
         RsData<Post> post1RsData = postFacade.createPost(user1, "제목1", "내용1");
         log.debug(post1RsData.getMsg());
