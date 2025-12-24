@@ -1,7 +1,6 @@
 package com.back.boundedContext.post.domain;
 
-import com.back.global.jpa.entity.BaseIdAndTimeManual;
-import jakarta.persistence.Column;
+import com.back.shared.member.domain.ReplicaMember;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -11,12 +10,10 @@ import lombok.NoArgsConstructor;
 @Table(name = "POST_MEMBER")
 @NoArgsConstructor
 @Getter
-public class PostMember extends BaseIdAndTimeManual {
-    // Member를 동기화시켜서 post 모듈 내부에서 사용 (BaseIdAndTime이 아닌 BaseIdAndTimeManual을 상속)
+public class PostMember extends ReplicaMember {
+    // Member를 동기화시켜서 post 모듈 내부에서 사용 (ReplicaMember 상속)
 
-    @Column(unique = true)
-    private String username;
-    private String password;
-    private String nickname;
-    private int activityScore;
+    public PostMember(String username, String password, String nickname) {
+        super(username, password, nickname);
+    }
 }
