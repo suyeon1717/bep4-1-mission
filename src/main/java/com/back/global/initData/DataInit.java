@@ -58,12 +58,12 @@ public class DataInit {
         Member user2 = memberRepository.getReferenceById(5);
         Member user3 = memberRepository.getReferenceById(6);
 
-        Post post1 = postFacade.createPost(user1, "제목1", "내용1");
-        Post post2 = postFacade.createPost(user1, "제목2", "내용2");
-        Post post3 = postFacade.createPost(user1, "제목3", "내용3");
-        Post post4 = postFacade.createPost(user2, "제목4", "내용4");
-        Post post5 = postFacade.createPost(user2, "제목5", "내용5");
-        Post post6 = postFacade.createPost(user3, "제목6", "내용6");
+        Post post1 = postFacade.createPost(user1, "제목1", "내용1").getData();
+        Post post2 = postFacade.createPost(user1, "제목2", "내용2").getData();
+        Post post3 = postFacade.createPost(user1, "제목3", "내용3").getData();
+        Post post4 = postFacade.createPost(user2, "제목4", "내용4").getData();
+        Post post5 = postFacade.createPost(user2, "제목5", "내용5").getData();
+        Post post6 = postFacade.createPost(user3, "제목6", "내용6").getData();
 
     }
 
