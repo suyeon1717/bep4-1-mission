@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class JoinMemberUseCase {
+public class MemberJoinUseCase {
     private final MemberRepository memberRepository;
     private final EventPublisher eventPublisher;
 
