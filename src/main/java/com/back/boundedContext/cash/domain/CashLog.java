@@ -1,10 +1,7 @@
 package com.back.boundedContext.cash.domain;
 
 import com.back.global.jpa.entity.BaseIdAndTime;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -23,6 +20,7 @@ public class CashLog extends BaseIdAndTime {
         정산수령__상품판매_대금,
     }
 
+    @Enumerated(EnumType.STRING)
     private EventType eventType;
     private String relTypeCode;
     private int relId;
