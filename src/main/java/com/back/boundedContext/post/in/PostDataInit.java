@@ -37,9 +37,9 @@ public class PostDataInit {
     public void makeBasePosts() {
         if (postFacade.count() > 0) return;
 
-        PostMember user1 = postFacade.findPostMemberByUsername("user1").get();
-        PostMember user2 = postFacade.findPostMemberByUsername("user2").get();
-        PostMember user3 = postFacade.findPostMemberByUsername("user3").get();
+        PostMember user1 = postFacade.findMemberByUsername("user1").get();
+        PostMember user2 = postFacade.findMemberByUsername("user2").get();
+        PostMember user3 = postFacade.findMemberByUsername("user3").get();
 
         RsData<Post> post1RsData = postFacade.createPost(user1, "제목1", "내용1");
         log.debug(post1RsData.getMsg());
@@ -69,9 +69,9 @@ public class PostDataInit {
         Post post5 = postFacade.findById(5).get();
         Post post6 = postFacade.findById(6).get();
 
-        PostMember user1 = postFacade.findPostMemberByUsername("user1").get();
-        PostMember user2 = postFacade.findPostMemberByUsername("user2").get();
-        PostMember user3 = postFacade.findPostMemberByUsername("user3").get();
+        PostMember user1 = postFacade.findMemberByUsername("user1").get();
+        PostMember user2 = postFacade.findMemberByUsername("user2").get();
+        PostMember user3 = postFacade.findMemberByUsername("user3").get();
 
         if (post1.hasComments()) return;
 
