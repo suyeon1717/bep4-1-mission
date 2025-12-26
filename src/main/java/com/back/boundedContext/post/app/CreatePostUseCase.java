@@ -9,9 +9,9 @@ import com.back.shared.member.out.MemberApiClient;
 import com.back.shared.post.dto.PostDto;
 import com.back.shared.post.event.PostCreatedEvent;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 @RequiredArgsConstructor
 public class CreatePostUseCase {
     private final PostRepository postRepository;
