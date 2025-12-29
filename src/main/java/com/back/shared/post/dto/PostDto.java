@@ -7,13 +7,14 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor(
+        // final 필드라도 생성자 기반으로 주입 가능
         onConstructor_ = @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
 )
 public class PostDto {
-    private int id;
-    private String title;
-    private String content;
-    private int authorId;
+    private final int id;
+    private final String title;
+    private final String content;
+    private final int authorId;
 
     public PostDto(Post post) {
         this.id = post.getId();
