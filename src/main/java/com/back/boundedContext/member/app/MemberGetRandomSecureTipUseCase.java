@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class MemberGetRandomSecureTipUseCase {
-    private MemberPolicy memberPolicy;
+    private final MemberPolicy memberPolicy;
 
     public String getRandomSecureTip() {
         return "비밀번호의 유효기간은 %d일 입니다."
