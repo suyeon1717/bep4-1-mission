@@ -40,6 +40,11 @@ public class CashFacade {
         return cashSupport.findWalletByHolder(holder);
     }
 
+    @Transactional(readOnly = true)
+    public Optional<Wallet> findWalletByHolderId(int holderId) {
+        return cashSupport.findWalletByHolderId(holderId);
+    }
+
     @Transactional
     public void handle(MarketOrderPaymentRequestedEvent event) {
         cashCompleteOrderPaymentUseCase.handle(event);
