@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Slf4j
 public class PayoutCreatePayoutUseCase {
-    public void createPayout(PayoutMemberDto payoutMember) {
-        log.debug("createPayout.payee: {}", payoutMember.getId());
+    public void createPayout(PayoutMemberDto payee) {
+        log.debug("createPayout.payee: {}", payee.getId());
     }
 }

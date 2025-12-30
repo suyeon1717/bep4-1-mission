@@ -20,8 +20,8 @@ public class PayoutFacade {
     }
 
     @Transactional
-    public void createPayout(PayoutMemberDto payoutMember) {
-        payoutCreatePayoutUseCase.createPayout(payoutMember);
+    public void createPayout(PayoutMemberDto payee) {
+        payoutCreatePayoutUseCase.createPayout(payee);
     }
 
     @Transactional
