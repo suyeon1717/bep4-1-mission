@@ -1,7 +1,7 @@
 package com.back.boundedContext.post.domain;
 
 import com.back.global.jpa.entity.BaseIdAndTime;
-import com.back.shared.post.dto.CommentDto;
+import com.back.shared.post.dto.PostDto;
 import com.back.shared.post.event.CommentCreatedEvent;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -34,13 +34,25 @@ public class Post extends BaseIdAndTime {
         this.content = content;
     }
 
+    public PostDto toDto() {
+        return new PostDto(
+                getId(),
+                getCreateDate(),
+                getModifyDate(),
+                author.getId(),
+                author.getNickname(),
+                title,
+                content
+        );
+    }
+
     public PostComment addComment(PostMember author, String content) {
         PostComment postComment = new PostComment(this, author, content);
 
         postComments.add(postComment);
 
         // 댓글 작성시 작성자의 활동점수 1점 증가
-        publishEvent(new CommentCreatedEvent(new CommentDto(postComment)));
+        publishEvent(new CommentCreatedEvent(postComment.toDto()));
 
         return postComment;
     }

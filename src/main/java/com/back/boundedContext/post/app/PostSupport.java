@@ -5,12 +5,12 @@ import com.back.boundedContext.post.domain.PostMember;
 import com.back.boundedContext.post.out.PostMemberRepository;
 import com.back.boundedContext.post.out.PostRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-@Component
+@Service
 @RequiredArgsConstructor
 public class PostSupport {
     private final PostRepository postRepository;
@@ -34,4 +34,10 @@ public class PostSupport {
     public List<Post> findByOrderByIdDesc() {
         return postRepository.findByOrderByIdDesc();
     }
+
+//    public List<PostDto> findByOrderByIdDesc() {
+//        return postRepository.findByOrderByIdDesc().stream()
+//                .map(Post::toDto) // entity -> dto
+//                .toList();
+//    }
 }

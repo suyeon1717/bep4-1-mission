@@ -30,7 +30,7 @@ public class MemberEventListener {
     @Transactional(propagation = REQUIRES_NEW)
     public void handle(CommentCreatedEvent event) {
         Member member = memberRepository.findById(
-                event.getCommentDto().getAuthorId()
+                event.getPostCommentDto().getAuthorId()
         ).orElseThrow();
         member.increaseActivityScore(1);
     }
