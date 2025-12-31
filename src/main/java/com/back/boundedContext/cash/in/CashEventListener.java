@@ -43,6 +43,7 @@ public class CashEventListener {
         cashFacade.completeOrderPayment(event.getOrder(), event.getPgPaymentAmount());
     }
 
+    // 정산 시, 실제 정산대금 지급
     @TransactionalEventListener
     @Transactional(propagation = REQUIRES_NEW)
     public void handle(PayoutCompletedEvent event) {

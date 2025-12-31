@@ -27,6 +27,7 @@ public abstract class BaseMember extends BaseEntity {
         this.activityScore = activityScore;
     }
 
+    // 정산 시, system 계정인지 확인
     public boolean isSystem() {
         return "system".equals(username);
     }

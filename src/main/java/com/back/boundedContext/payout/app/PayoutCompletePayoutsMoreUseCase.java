@@ -14,9 +14,10 @@ import java.util.List;
 public class PayoutCompletePayoutsMoreUseCase {
     private final PayoutRepository payoutRepository;
 
-    public RsData<Integer> completePayoutsMore(int limit) {
+    public RsData<Integer> completePayoutsMore(int limit) { // 정산처리할 건 수
         List<Payout> activePayouts = findActivePayouts(limit);
 
+        // 정산 데이터 체킹
         if (activePayouts.isEmpty())
             return new RsData<>("200-1", "더 이상 정산할 정산내역이 없습니다.", 0);
 
