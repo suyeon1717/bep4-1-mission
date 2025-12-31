@@ -74,7 +74,7 @@ public class PayoutDataInit {
 
     @Transactional
     public void completePayoutsMore() {
-        payoutFacade.completePayoutMore(1);
+        payoutFacade.completePayoutsMore(1);
     }
 
     public void runCollectItemsAndCompletePayoutsBatchJob() {

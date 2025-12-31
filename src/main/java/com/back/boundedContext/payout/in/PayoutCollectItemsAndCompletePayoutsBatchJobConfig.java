@@ -25,10 +25,12 @@ public class PayoutCollectItemsAndCompletePayoutsBatchJobConfig {
     @Bean
     public Job payoutCollectItemsJob(
             JobRepository jobRepository,
-            Step payoutCollectItemsStep
+            Step payoutCollectItemsStep,
+            Step payoutCompletePayouts
     ) {
         return new JobBuilder("payoutCollectItemsJob", jobRepository)
                 .start(payoutCollectItemsStep)
+                .next(payoutCompletePayouts)
                 .build();
     }
 
@@ -37,6 +39,23 @@ public class PayoutCollectItemsAndCompletePayoutsBatchJobConfig {
         return new StepBuilder("payoutCollectItemsStep", jobRepository)
                 .tasklet((contribution, chunkContext) -> {
                     int processedCount = payoutFacade.collectPayoutItemsMore(CHUNK_SIZE).getData();
+
+                    if (processedCount == 0) {
+                        return RepeatStatus.FINISHED;
+                    }
+
+                    contribution.incrementWriteCount(processedCount);
+
+                    return RepeatStatus.CONTINUABLE;
+                })
+                .build();
+    }
+
+    @Bean
+    public Step payoutCompletePayouts(JobRepository jobRepository) {
+        return new StepBuilder("payoutCompletePayouts", jobRepository)
+                .tasklet((contribution, chunkContext) -> {
+                    int processedCount = payoutFacade.completePayoutsMore(CHUNK_SIZE).getData();
 
                     if (processedCount == 0) {
                         return RepeatStatus.FINISHED;
