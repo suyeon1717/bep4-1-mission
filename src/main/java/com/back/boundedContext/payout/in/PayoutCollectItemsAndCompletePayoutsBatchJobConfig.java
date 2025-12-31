@@ -13,12 +13,12 @@ import org.springframework.context.annotation.Configuration;
 
 @Slf4j
 @Configuration
-public class PayoutCollectItemsBatchJobConfig {
+public class PayoutCollectItemsAndCompletePayoutsBatchJobConfig {
     private static final int CHUNK_SIZE = 10;
 
     private final PayoutFacade payoutFacade;
 
-    public PayoutCollectItemsBatchJobConfig(PayoutFacade payoutFacade) {
+    public PayoutCollectItemsAndCompletePayoutsBatchJobConfig(PayoutFacade payoutFacade) {
         this.payoutFacade = payoutFacade;
     }
 

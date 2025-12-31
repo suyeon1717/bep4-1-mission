@@ -11,7 +11,7 @@ import java.util.Optional;
 public interface PayoutRepository extends JpaRepository<Payout, Integer> {
     Optional<Payout> findByPayeeAndPayoutDateIsNull(PayoutMember payee);
 
-    // 아직 지급 안 된(payoutDate = null), 금액이 0보다 큰 데이터 중에서
+    // 아직 지급 안 된(payoutDate = null), 금액이 amount보다 큰 데이터 중에서
     // id 오름차순으로 limit개만 가져오는 쿼리
     List<Payout> findByPayoutDateIsNullAndAmountGreaterThanOrderByIdAsc(long amount, Pageable pageable);
 }
